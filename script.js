@@ -251,7 +251,7 @@ function updateTypeButtons() {
 
 form.addEventListener(
     "submit",
-    function(event) {
+    function (event) {
 
         event.preventDefault();
 
@@ -864,8 +864,8 @@ function createTransactionHTML(
                 <div class="
                     transaction-icon
                     ${isIncome
-                        ? "income-icon"
-                        : "expense-icon"}
+            ? "income-icon"
+            : "expense-icon"}
                 ">
 
                     ${icon}
@@ -877,19 +877,19 @@ function createTransactionHTML(
 
                     <strong>
                         ${escapeHTML(
-                            transaction.description
-                        )}
+                transaction.description
+            )}
                     </strong>
 
                     <small>
 
                         ${escapeHTML(
-                            transaction.category
-                        )}
+                transaction.category
+            )}
                         •
                         ${formatDate(
-                            transaction.date
-                        )}
+                transaction.date
+            )}
 
                     </small>
 
@@ -901,11 +901,10 @@ function createTransactionHTML(
             <div class="transaction-right">
 
                 <div
-                    class="amount ${
-                        isIncome
-                            ? "income-text"
-                            : "expense-text"
-                    }"
+                    class="amount ${isIncome
+            ? "income-text"
+            : "expense-text"
+        }"
                 >
 
                     ${amount}
@@ -916,16 +915,76 @@ function createTransactionHTML(
                 <div class="transaction-actions">
 
                     <button
-                        onclick="editTransaction(${transaction.id})"
-                    >
-                        Edit
-                    </button>
+    onclick="editTransaction(${transaction.id})"
+    title="Edit"
+    style="
+        width:36px;
+        height:36px;
+        border:none;
+        border-radius:12px;
+        background:#202035;
+        color:#8b5cf6;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        cursor:pointer;
+        box-shadow:
+            4px 4px 8px #0c0c16,
+            -4px -4px 8px #30304a;
+    "
+>
+    <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+    >
+        <path d="M12 20h9"></path>
+        <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+    </svg>
+</button>
 
-                    <button
-                        onclick="deleteTransaction(${transaction.id})"
-                    >
-                        Delete
-                    </button>
+
+<button
+    onclick="deleteTransaction(${transaction.id})"
+    title="Delete"
+    style="
+        width:36px;
+        height:36px;
+        border:none;
+        border-radius:12px;
+        background:#202035;
+        color:#f43f5e;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        cursor:pointer;
+        box-shadow:
+            4px 4px 8px #0c0c16,
+            -4px -4px 8px #30304a;
+    "
+>
+    <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+    >
+        <path d="M3 6h18"></path>
+        <path d="M8 6V4h8v2"></path>
+        <path d="M19 6l-1 14H6L5 6"></path>
+        <path d="M10 11v5"></path>
+        <path d="M14 11v5"></path>
+    </svg>
+</button>
 
                 </div>
 
@@ -941,37 +1000,111 @@ function createTransactionHTML(
    CATEGORY ICON
 ===================================== */
 
-function getCategoryIcon(
-    category
-) {
+function getCategoryIcon(category) {
 
-    const icons = {
+    const icons = { 
 
-        Food: "🍔",
+        Food: `
+            <svg width="22" height="22" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 2v7a4 4 0 0 0 4 4h1V2"/>
+                <path d="M7 2v5"/>
+                <path d="M11 2v7a4 4 0 0 1-4 4"/>
+                <path d="M7 13v9"/>
+                <path d="M17 2v20"/>
+                <path d="M17 2c2 2 4 4 4 7v2h-4"/>
+            </svg>
+        `,
 
-        Travel: "🚆",
+        Travel: `
+            <svg width="22" height="22" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 17h14"/>
+                <path d="M6 17l1-5h10l1 5"/>
+                <path d="M8 12V9h8v3"/>
+                <circle cx="8" cy="17" r="1.5"/>
+                <circle cx="16" cy="17" r="1.5"/>
+                <path d="M9 9V6h6v3"/>
+            </svg>
+        `,
 
-        Shopping: "🛍️",
+        Shopping: `
+            <svg width="22" height="22" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 8h12l1 13H5L6 8Z"/>
+                <path d="M9 8a3 3 0 0 1 6 0"/>
+            </svg>
+        `,
 
-        Bills: "💡",
+        Bills: `
+            <svg width="22" height="22" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2h12v20l-3-2-3 2-3-2-3 2V2Z"/>
+                <path d="M9 7h6"/>
+                <path d="M9 11h6"/>
+                <path d="M9 15h4"/>
+            </svg>
+        `,
 
-        Entertainment: "🎬",
+        Entertainment: `
+            <svg width="22" height="22" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="5" width="18" height="14" rx="2"/>
+                <path d="M10 9l5 3-5 3V9Z"/>
+            </svg>
+        `,
 
-        Health: "💊",
+        Health: `
+            <svg width="22" height="22" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 21s-7-4.5-9-9c-2-4.5 3.5-8 7-4.5L12 9l2-1.5c3.5-3.5 9 0 7 4.5-2 4.5-9 9-9 9Z"/>
+                <path d="M9 12h6"/>
+                <path d="M12 9v6"/>
+            </svg>
+        `,
 
-        Salary: "💼",
+        Salary: `
+            <svg width="22" height="22" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="5" width="18" height="14" rx="2"/>
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M3 9h2"/>
+                <path d="M19 9h2"/>
+                <path d="M3 15h2"/>
+                <path d="M19 15h2"/>
+            </svg>
+        `,
 
-        Business: "💰",
+        Business: `
+            <svg width="22" height="22" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="7" width="18" height="13" rx="2"/>
+                <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                <path d="M3 12h18"/>
+                <path d="M10 12v2h4v-2"/>
+            </svg>
+        `,
 
-        Other: "📦"
-
+        Other: `
+            <svg width="22" height="22" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M8 12h8"/>
+                <path d="M12 8v8"/>
+            </svg>
+        `
     };
 
-
-    return (
-        icons[category] ||
-        "💰"
-    );
+    return icons[category] || icons.Other;
 }
 
 
@@ -1017,7 +1150,7 @@ function editTransaction(id) {
         "modalTitle"
     ).textContent =
         transaction.type ===
-        "income"
+            "income"
             ? "Edit Money"
             : "Edit Expense";
 
@@ -1148,7 +1281,7 @@ function renderAll() {
 
 modal.addEventListener(
     "click",
-    function(event) {
+    function (event) {
 
         if (
             event.target === modal
@@ -1167,7 +1300,7 @@ modal.addEventListener(
 
 document.addEventListener(
     "keydown",
-    function(event) {
+    function (event) {
 
         if (
             event.key === "Escape"
