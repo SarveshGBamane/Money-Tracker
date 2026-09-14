@@ -289,6 +289,87 @@
                 #15803d);
     }
 
+    .transaction-icon {
+        width: 62px;
+        height: 62px;
+
+        min-width: 62px;
+
+        border-radius: 20px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        transition: 0.2s ease;
+
+        box-shadow:
+            5px 5px 10px var(--shadow-dark),
+            -5px -5px 10px var(--shadow-light);
+    }
+
+    .transaction-icon svg {
+        width: 27px;
+        height: 27px;
+
+        display: block;
+
+        stroke-width: 2.2;
+    }
+
+    /* Expense icon */
+
+    .expense-icon {
+        background: #f6d6da;
+        color: #ff6403;
+
+        box-shadow:
+            5px 5px 10px #0c0c16,
+            -5px -5px 10px #30304a;
+    }
+
+
+    /* Income icon */
+
+    .income-icon {
+        background: #ccebdc;
+        color: #28a96b;
+
+        box-shadow:
+            5px 5px 10px #0c0c16,
+            -5px -5px 10px #30304a;
+    }
+
+    .section-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .section-icon {
+        width: 38px;
+        height: 38px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 12px;
+
+        background: #28283f;
+        color: #8b5cf6;
+
+        box-shadow:
+            4px 4px 8px #0c0c16,
+            -4px -4px 8px #30304a;
+    }
+
+    .section-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+
+
 
     /* ================================
    STATISTICS
@@ -585,20 +666,88 @@
         font-weight: 800;
     }
 
-    .transaction-actions {
+    /* =====================================
+   EDIT & DELETE BUTTONS
+===================================== */
 
-        margin-top: 5px;
+    .transaction-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+        margin-top: 7px;
     }
 
     .transaction-actions button {
+        border: none;
+        padding: 6px 11px;
+        border-radius: 10px;
 
-        background: transparent;
+        font-size: 12px;
+        font-weight: 600;
 
-        margin-left: 8px;
+        cursor: pointer;
 
-        font-size: 13px;
+        transition: all 0.2s ease;
 
-        color: var(--muted);
+        background: var(--card);
+    }
+
+
+    /* ---------- EDIT BUTTON ---------- */
+
+    .transaction-actions button:first-child {
+        color: #8b5cf6;
+
+        box-shadow:
+            3px 3px 6px var(--shadow-dark),
+            -3px -3px 6px var(--shadow-light);
+    }
+
+    .transaction-actions button:first-child:hover {
+        color: #a78bfa;
+
+        transform: translateY(-2px);
+
+        box-shadow:
+            4px 4px 8px var(--shadow-dark),
+            -4px -4px 8px var(--shadow-light);
+    }
+
+    .transaction-actions button:first-child:active {
+        transform: translateY(1px);
+
+        box-shadow:
+            inset 3px 3px 6px var(--shadow-dark),
+            inset -3px -3px 6px var(--shadow-light);
+    }
+
+
+    /* ---------- DELETE BUTTON ---------- */
+
+    .transaction-actions button:last-child {
+        color: #f43f5e;
+
+        box-shadow:
+            3px 3px 6px var(--shadow-dark),
+            -3px -3px 6px var(--shadow-light);
+    }
+
+    .transaction-actions button:last-child:hover {
+        color: #fb7185;
+
+        transform: translateY(-2px);
+
+        box-shadow:
+            4px 4px 8px var(--shadow-dark),
+            -4px -4px 8px var(--shadow-light);
+    }
+
+    .transaction-actions button:last-child:active {
+        transform: translateY(1px);
+
+        box-shadow:
+            inset 3px 3px 6px var(--shadow-dark),
+            inset -3px -3px 6px var(--shadow-light);
     }
 
     .transaction-actions button:hover {
