@@ -801,7 +801,7 @@ function renderTransactions() {
             <div class="empty">
 
                 <div style="font-size:40px">
-                    💰
+                    
                 </div>
 
                 <p>No transactions found</p>
