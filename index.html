@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,148 +8,51 @@
     <title>Money Tracker</title>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
 
-<div class="app">
+    <div class="app">
 
-    <!-- HEADER -->
-    <header class="header">
+        <!-- HEADER -->
+        <header class="header">
 
-        <div class="brand">
-            <div class="logo">₹</div>
-
-            <div>
-                <h1>Money Tracker</h1>
-                <p>Track your money smarter</p>
-            </div>
-        </div>
-
-        <div class="date-box" id="todayDate"></div>
-
-    </header>
-
-
-    <!-- BALANCE -->
-    <section class="balance-card">
-
-        <span class="balance-label">Current Balance</span>
-
-        <div class="balance" id="balance">
-            ₹0
-        </div>
-
-        <div class="balance-row">
-
-            <div class="mini-balance">
-                <span>Total Income</span>
-                <strong class="income-text" id="totalIncome">
-                    ₹0
-                </strong>
-            </div>
-
-            <div class="mini-balance">
-                <span>Total Expense</span>
-                <strong class="expense-text" id="totalExpense">
-                    ₹0
-                </strong>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ADD BUTTONS -->
-    <section class="actions">
-
-        <button
-            class="action-btn expense-btn"
-            onclick="openModal('expense')"
-        >
-            <span>−</span>
-            Add Expense
-        </button>
-
-        <button
-            class="action-btn income-btn"
-            onclick="openModal('income')"
-        >
-            <span>+</span>
-            Add Money
-        </button>
-
-    </section>
-
-
-    <!-- PERIOD STATS -->
-    <section class="stats">
-
-        <div class="stat">
-            <div class="stat-title">Today</div>
-            <div class="stat-value" id="todayTotal">₹0</div>
-        </div>
-
-        <div class="stat">
-            <div class="stat-title">This Week</div>
-            <div class="stat-value" id="weekTotal">₹0</div>
-        </div>
-
-        <div class="stat">
-            <div class="stat-title">This Month</div>
-            <div class="stat-value" id="monthTotal">₹0</div>
-        </div>
-
-        <div class="stat">
-            <div class="stat-title">Transactions</div>
-            <div class="stat-value" id="transactionCount">0</div>
-        </div>
-
-    </section>
-
-
-    <!-- MAIN -->
-    <main class="main-grid">
-
-        <!-- DATE RANGE -->
-        <section class="card">
-
-            <h2>📅 Date Range</h2>
-
-            <div class="range-fields">
+            <div class="brand">
+                <div class="logo">₹</div>
 
                 <div>
-                    <label>From</label>
-                    <input type="date" id="rangeFrom">
+                    <h1>Money Tracker</h1>
+                    <p>Track your money smarter</p>
                 </div>
-
-                <div>
-                    <label>To</label>
-                    <input type="date" id="rangeTo">
-                </div>
-
             </div>
 
-            <div class="range-result">
+            <div class="date-box" id="todayDate"></div>
 
-                <div>
-                    <span>Income</span>
-                    <strong class="income-text" id="rangeIncome">
+        </header>
+
+
+        <!-- BALANCE -->
+        <section class="balance-card">
+
+            <span class="balance-label">Current Balance</span>
+
+            <div class="balance" id="balance">
+                ₹0
+            </div>
+
+            <div class="balance-row">
+
+                <div class="mini-balance">
+                    <span>Total Income</span>
+                    <strong class="income-text" id="totalIncome">
                         ₹0
                     </strong>
                 </div>
 
-                <div>
-                    <span>Expense</span>
-                    <strong class="expense-text" id="rangeExpense">
-                        ₹0
-                    </strong>
-                </div>
-
-                <div>
-                    <span>Balance</span>
-                    <strong id="rangeBalance">
+                <div class="mini-balance">
+                    <span>Total Expense</span>
+                    <strong class="expense-text" id="totalExpense">
                         ₹0
                     </strong>
                 </div>
@@ -158,163 +62,229 @@
         </section>
 
 
-        <!-- TRANSACTIONS -->
-        <section class="card">
+        <!-- ADD BUTTONS -->
+        <section class="actions">
 
-            <h2>Recent Transactions</h2>
+            <button class="action-btn expense-btn" onclick="openModal('expense')">
+                <span>−</span>
+                Add Expense
+            </button>
 
-            <div class="filters">
-
-                <select id="filterType">
-                    <option value="all">All Transactions</option>
-                    <option value="income">Income</option>
-                    <option value="expense">Expense</option>
-                </select>
-
-                <input
-                    type="text"
-                    id="searchTransaction"
-                    placeholder="Search..."
-                >
-
-            </div>
-
-            <div
-                class="transactions"
-                id="transactions"
-            ></div>
+            <button class="action-btn income-btn" onclick="openModal('income')">
+                <span>+</span>
+                Add Money
+            </button>
 
         </section>
 
-    </main>
 
-</div>
+        <!-- PERIOD STATS -->
+        <section class="stats">
 
-
-<!-- MODAL -->
-
-<div class="modal-overlay" id="modal">
-
-    <div class="modal">
-
-        <div class="modal-header">
-
-            <h2 id="modalTitle">Add Expense</h2>
-
-            <button
-                class="close"
-                onclick="closeModal()"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <!-- TYPE -->
-
-        <div class="type-selector">
-
-            <button
-                id="expenseTypeBtn"
-                class="expense active"
-                onclick="setTransactionType('expense')"
-            >
-                💸 Expense
-            </button>
-
-            <button
-                id="incomeTypeBtn"
-                class="income"
-                onclick="setTransactionType('income')"
-            >
-                💰 Money
-            </button>
-
-        </div>
-
-
-        <form id="transactionForm">
-
-            <div class="form-group">
-
-                <label>Amount</label>
-
-                <input
-                    type="number"
-                    id="amount"
-                    placeholder="Enter amount"
-                    min="0"
-                    step="0.01"
-                    required
-                >
-
+            <div class="stat">
+                <div class="stat-title">Today</div>
+                <div class="stat-value" id="todayTotal">₹0</div>
             </div>
 
-
-            <div class="form-group">
-
-                <label>Description</label>
-
-                <input
-                    type="text"
-                    id="description"
-                    placeholder="e.g. Food, Salary, Travel"
-                    required
-                >
-
+            <div class="stat">
+                <div class="stat-title">This Week</div>
+                <div class="stat-value" id="weekTotal">₹0</div>
             </div>
 
-
-            <div class="form-group">
-
-                <label>Category</label>
-
-                <select id="category">
-
-                    <option value="Food">🍔 Food</option>
-                    <option value="Travel">🚆 Travel</option>
-                    <option value="Shopping">🛍️ Shopping</option>
-                    <option value="Bills">💡 Bills</option>
-                    <option value="Entertainment">🎬 Entertainment</option>
-                    <option value="Health">💊 Health</option>
-                    <option value="Salary">💼 Salary</option>
-                    <option value="Business">💰 Business</option>
-                    <option value="Other">📦 Other</option>
-
-                </select>
-
+            <div class="stat">
+                <div class="stat-title">This Month</div>
+                <div class="stat-value" id="monthTotal">₹0</div>
             </div>
 
-
-            <div class="form-group">
-
-                <label>Date</label>
-
-                <input
-                    type="date"
-                    id="transactionDate"
-                    required
-                >
-
+            <div class="stat">
+                <div class="stat-title">Transactions</div>
+                <div class="stat-value" id="transactionCount">0</div>
             </div>
 
+        </section>
 
-            <button
-                type="submit"
-                class="save-btn"
-            >
-                Save Transaction
-            </button>
 
-        </form>
+        <!-- MAIN -->
+        <main class="main-grid">
+
+            <!-- DATE RANGE -->
+            <section class="card">
+
+                <h2 class="section-title">
+                    <span class="section-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="17" rx="3"></rect>
+                            <path d="M16 2v4"></path>
+                            <path d="M8 2v4"></path>
+                            <path d="M3 9h18"></path>
+                            <path d="M8 13h2"></path>
+                            <path d="M14 13h2"></path>
+                            <path d="M8 17h2"></path>
+                            <path d="M14 17h2"></path>
+                        </svg>
+                    </span>
+
+                    Date Range
+                </h2>
+                <div class="range-fields">
+
+                    <div>
+                        <label>From</label>
+                        <input type="date" id="rangeFrom">
+                    </div>
+
+                    <div>
+                        <label>To</label>
+                        <input type="date" id="rangeTo">
+                    </div>
+
+                </div>
+
+                <div class="range-result">
+
+                    <div>
+                        <span>Income</span>
+                        <strong class="income-text" id="rangeIncome">
+                            ₹0
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>Expense</span>
+                        <strong class="expense-text" id="rangeExpense">
+                            ₹0
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>Balance</span>
+                        <strong id="rangeBalance">
+                            ₹0
+                        </strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- TRANSACTIONS -->
+            <section class="card">
+
+                <h2>Recent Transactions</h2>
+
+                <div class="filters">
+
+                    <select id="filterType">
+                        <option value="all">All Transactions</option>
+                        <option value="income">Income</option>
+                        <option value="expense">Expense</option>
+                    </select>
+
+                    <input type="text" id="searchTransaction" placeholder="Search...">
+
+                </div>
+
+                <div class="transactions" id="transactions"></div>
+
+            </section>
+
+        </main>
 
     </div>
 
-</div>
+
+    <!-- MODAL -->
+
+    <div class="modal-overlay" id="modal">
+
+        <div class="modal">
+
+            <div class="modal-header">
+
+                <h2 id="modalTitle">Add Expense</h2>
+
+                <button class="close" onclick="closeModal()">
+                    ×
+                </button>
+
+            </div>
 
 
-<script src="script.js"></script>
+            <!-- TYPE -->
+
+            <div class="type-selector">
+
+                <button id="expenseTypeBtn" class="expense active" onclick="setTransactionType('expense')">
+                     Expense
+                </button>
+
+                <button id="incomeTypeBtn" class="income" onclick="setTransactionType('income')">
+                     Money
+                </button>
+
+            </div>
+
+
+            <form id="transactionForm">
+
+                <div class="form-group">
+
+                    <label>Amount</label>
+
+                    <input type="number" id="amount" placeholder="Enter amount" min="0" step="0.01" required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Description</label>
+
+                    <input type="text" id="description" placeholder="e.g. Food, Salary, Travel" required>
+
+                </div>
+
+                <div class="form-group">
+                    <label>Category</label>
+
+                    <select id="category">
+                        <option value="Food">Food</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Shopping">Shopping</option>
+                        <option value="Bills">Bills</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Health">Health</option>
+                        <option value="Salary">Salary</option>
+                        <option value="Business">Business</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Date</label>
+
+                    <input type="date" id="transactionDate" required>
+
+                </div>
+
+
+                <button type="submit" class="save-btn">
+                    Save Transaction
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
 
 </body>
+
 </html>
